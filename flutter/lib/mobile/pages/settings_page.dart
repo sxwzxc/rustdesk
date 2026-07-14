@@ -665,8 +665,8 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
         title: Text(translate('Don\'t auto-show mobile actions panel')),
         onToggle: (bool toValue) {
           bind.setLocalFlutterOption(
-              key: kOptionDisableAutoShowMobileActions,
-              value: toValue ? 'Y' : 'N');
+              k: kOptionDisableAutoShowMobileActions,
+              v: toValue ? 'Y' : 'N');
           setState(() => _disableAutoShowMobileActions = toValue);
         }));
 
