@@ -216,6 +216,11 @@ const String kOptionKeepAwakeDuringOutgoingSessions = "keep-awake-during-outgoin
 
 const String kOptionShowMobileAction = "showMobileActions";
 
+// 控制连接到 Android 被控端时是否自动弹出快捷操作面板。
+// 'Y' = 禁用自动弹出（默认，对应 UI 勾选）；'N' = 启用自动弹出。
+const String kOptionDisableAutoShowMobileActions =
+    "disableAutoShowMobileActions";
+
 const String kUrlActionClose = "close";
 
 const String kTabLabelHomePage = "Home";

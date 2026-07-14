@@ -75,6 +75,8 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
   var _showTerminalExtraKeys = false;
   var _floatingWindowDisabled = false;
   var _keepScreenOn = KeepScreenOn.duringControlled; // relay on floating window
+  // 默认禁用自动弹出快捷操作面板（对应 UI 默认勾选）。
+  var _disableAutoShowMobileActions = true;
   var _enableAbr = false;
   var _denyLANDiscovery = false;
   var _onlyWhiteList = false;
@@ -146,6 +148,9 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
         mainGetLocalBoolOptionSync(kOptionKeepAwakeDuringOutgoingSessions);
     _showTerminalExtraKeys =
         mainGetLocalBoolOptionSync(kOptionEnableShowTerminalExtraKeys);
+    _disableAutoShowMobileActions =
+        bind.getLocalFlutterOption(k: kOptionDisableAutoShowMobileActions) !=
+            'N';
   }
 
   @override
@@ -652,6 +657,18 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
         onToggle: bind.mainIsOptionFixed(key: kOptionDisableFloatingWindow)
             ? null
             : onFloatingWindowChanged));
+
+    // 控制连接到 Android 被控端时是否自动弹出快捷操作面板。
+    // 默认勾选（禁用自动弹出）；取消勾选后才会自动弹出。
+    enhancementsTiles.add(SettingsTile.switchTile(
+        initialValue: _disableAutoShowMobileActions,
+        title: Text(translate('Don\'t auto-show mobile actions panel')),
+        onToggle: (bool toValue) {
+          bind.setLocalFlutterOption(
+              key: kOptionDisableAutoShowMobileActions,
+              value: toValue ? 'Y' : 'N');
+          setState(() => _disableAutoShowMobileActions = toValue);
+        }));
 
     enhancementsTiles.add(_getPopupDialogRadioEntry(
       title: 'Keep screen on',

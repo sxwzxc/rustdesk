@@ -1570,7 +1570,9 @@ class FfiModel with ChangeNotifier {
           parent.target != null &&
           parent.target!.ffiModel.permissions['keyboard'] != false) {
         Timer(Duration(milliseconds: delayMSecs), () {
-          if (parent.target!.dialogManager.mobileActionsOverlayVisible.isTrue) {
+          // 默认禁用自动弹出；仅当用户在设置中取消勾选时才自动弹出。
+          if (parent.target!.dialogManager.shouldAutoShowMobileActions() &&
+              parent.target!.dialogManager.mobileActionsOverlayVisible.isTrue) {
             parent.target!.dialogManager
                 .showMobileActionsOverlay(ffi: parent.target!);
           }

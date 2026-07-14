@@ -611,6 +611,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Use texture rendering", "使用纹理渲染"),
         ("Floating window", "悬浮窗"),
         ("floating_window_tip", "有助于保持 RustDesk 后台服务"),
+        ("Don't auto-show mobile actions panel", "不自动显示快捷操作面板"),
         ("Keep screen on", "保持屏幕开启"),
         ("Never", "从不"),
         ("During controlled", "被控期间"),

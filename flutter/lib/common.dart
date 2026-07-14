@@ -807,6 +807,13 @@ class OverlayDialogManager {
         bind.getLocalFlutterOption(k: kOptionShowMobileAction) != 'N';
   }
 
+  // 连接到 Android 被控端时是否自动弹出快捷操作面板。
+  // 默认禁用自动弹出（option 为空或 'Y'）；仅当用户取消勾选（'N'）时才自动弹出。
+  bool shouldAutoShowMobileActions() {
+    return bind.getLocalFlutterOption(k: kOptionDisableAutoShowMobileActions) ==
+        'N';
+  }
+
   void setOverlayState(OverlayKeyState overlayKeyState) {
     _overlayKeyState = overlayKeyState;
   }
