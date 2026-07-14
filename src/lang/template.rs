@@ -765,5 +765,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("All monitors", ""),
         ("#{} monitor", ""),
         ("conn-e2ee-unavailable-tip", ""),
+        ("Hide tray icon", ""),
+        ("hide-tray-icon-tip", ""),
     ].iter().cloned().collect();
 }

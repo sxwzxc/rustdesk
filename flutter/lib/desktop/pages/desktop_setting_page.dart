@@ -594,6 +594,24 @@ class _GeneralState extends State<_General> {
       children.add(_OptionCheckBox(
           context, 'Allow linux headless', kOptionAllowLinuxHeadless));
     }
+    if (!isWeb &&
+        bind.mainGetBuildinOption(key: kOptionHideTray) != 'Y') {
+      children.add(Tooltip(
+        message: translate('hide-tray-icon-tip'),
+        child: _OptionCheckBox(
+          context,
+          'Hide tray icon',
+          kOptionHideTray,
+          isServer: false,
+          optGetter: () =>
+              bind.mainGetLocalOption(key: kOptionHideTray) == 'Y',
+          optSetter: (key, value) async {
+            await bind.mainSetLocalOption(
+                key: key, value: value ? 'Y' : 'N');
+          },
+        ),
+      ));
+    }
     if (!bind.isDisableAccount()) {
       children.add(_OptionCheckBox(
         context,

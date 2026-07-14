@@ -200,6 +200,7 @@ const String kOptionDisableChangeId = "disable-change-id";
 const String kOptionDisableUnlockPin = "disable-unlock-pin";
 const kHideUsernameOnCard = "hide-username-on-card";
 const String kOptionHideHelpCards = "hide-help-cards";
+const String kOptionHideTray = "hide-tray";
 const String kOptionAllowDeepLinkPassword = "allow-deep-link-password";
 const String kOptionAllowDeepLinkServerSettings =
     "allow-deep-link-server-settings";
